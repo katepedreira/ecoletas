@@ -1,6 +1,6 @@
 from django.contrib import admin
 
-from .models import Emissor, Coletor, Endereco, SolicitacaoColeta
+from .models import Emissor, Coletor, Endereco, SolicitacaoColeta, PagamentoTaxaColeta
 
 
 @admin.register(Emissor)
@@ -17,7 +17,9 @@ class EnderecoAdmin(admin.ModelAdmin):
 
 @admin.register(SolicitacaoColeta)
 class SolicitacaoColetaAdmin(admin.ModelAdmin):
-    list_display = ('codSolicitacao', 'valor', 'dataSolicitacao', 'qtdItens', 'tipoProduto')
+    list_display = ('valor', 'dataSolicitacao', 'qtdItens', 'tipoProduto')
 
-
+@admin.register(PagamentoTaxaColeta)
+class SolicitacaoColetaAdmin(admin.ModelAdmin):
+    list_display = ('status', 'desconto')
 

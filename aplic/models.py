@@ -44,10 +44,15 @@ class Endereco(models.Model):
 
 class SolicitacaoColeta(models.Model):
     codSolicitacao = models.CharField('Código', max_length=100)
-    valor = models.IntegerField('Valor', max_length=200)
+    valor = models.FloatField('Valor', max_length=200)
     dataSolicitacao = models.DateField('Data', max_length=10)
     qtdItens = models.IntegerField('Quantidade de Itens', max_length=100)
     tipoProduto = models.CharField('Tipo de Produto', max_length=100)
+
+class PagamentoTaxaColeta(models.Model):
+    codPagamento = models.CharField('Código', max_length=100)
+    status = models.CharField('Status', max_length=200)
+    desconto = models.FloatField('Desconto', max_length=10)
 
 
 
