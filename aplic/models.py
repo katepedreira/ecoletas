@@ -26,6 +26,23 @@ class Coletor(models.Model):
     def __str__(self):
         return self.nome
 
+class Endereco(models.Model):
+    codEndereco = models.CharField('Código', max_length=100)
+    logradouro = models.CharField('Logradouro', max_length=200)
+    numero = models.CharField('Número', max_length=10)
+    cidade = models.CharField('Cidade', max_length=50)
+    bairro = models.CharField('Bairro', max_length=100)
+    complemento = models.CharField('Complemento', max_length=200)
+    cep = models.CharField('CEP', max_length=8)
+
+    class Meta:
+        verbose_name = 'Endereço'
+        verbose_name_plural = 'Endereços'
+
+    def __str__(self):
+        return self.codEndereco
+
+
 
 
 
