@@ -1,25 +1,54 @@
 from django.db import models
 
-class Emissor(models.Model):
+class Emissor_Pf(models.Model):
     nome = models.CharField('Nome', max_length=100)
     telefone = models.CharField('Telefone', max_length=11)
     email = models.EmailField('E-mail')
-    codEmissor = models.CharField('Código', max_length=100)
+    #codEmissor = models.CharField('Código', max_length=100)
 
     class Meta:
+        abstract = False
+        verbose_name = 'Emissor'
+        verbose_name_plural = 'Emissores'
+
+    def __str__(self):
+        return self.nome
+class Emissor_Pj(models.Model):
+    nome = models.CharField('Nome', max_length=100)
+    telefone = models.CharField('Telefone', max_length=11)
+    email = models.EmailField('E-mail')
+    #codEmissor = models.CharField('Código', max_length=100)
+
+    class Meta:
+        abstract = False
         verbose_name = 'Emissor'
         verbose_name_plural = 'Emissores'
 
     def __str__(self):
         return self.nome
 
-class Coletor(models.Model):
+class Coletor_Pf(models.Model):
     nome = models.CharField('Nome', max_length=100)
     telefone = models.CharField('Telefone', max_length=11)
     email = models.EmailField('E-mail')
-    codColetor = models.CharField('Código', max_length=100)
+    #codColetor = models.CharField('Código', max_length=100)
 
     class Meta:
+        abstract = False
+        verbose_name = 'Coletor'
+        verbose_name_plural = 'Coletores'
+
+    def __str__(self):
+        return self.nome
+
+class Coletor_Pj(models.Model):
+    nome = models.CharField('Nome', max_length=100)
+    telefone = models.CharField('Telefone', max_length=11)
+    email = models.EmailField('E-mail')
+    #codColetor = models.CharField('Código', max_length=100)
+
+    class Meta:
+        abstract = False
         verbose_name = 'Coletor'
         verbose_name_plural = 'Coletores'
 
@@ -27,7 +56,7 @@ class Coletor(models.Model):
         return self.nome
 
 class Endereco(models.Model):
-    codEndereco = models.CharField('Código', max_length=100)
+    #codEndereco = models.CharField('Código', max_length=100)
     logradouro = models.CharField('Logradouro', max_length=200)
     numero = models.CharField('Número', max_length=10)
     cidade = models.CharField('Cidade', max_length=50)
@@ -43,14 +72,18 @@ class Endereco(models.Model):
         return self.codEndereco
 
 class SolicitacaoColeta(models.Model):
-    codSolicitacao = models.CharField('Código', max_length=100)
+    #codSolicitacao = models.CharField('Código', max_length=100)
     valor = models.FloatField('Valor', max_length=200)
     dataSolicitacao = models.DateField('Data', max_length=10)
     qtdItens = models.IntegerField('Quantidade de Itens', max_length=100)
     tipoProduto = models.CharField('Tipo de Produto', max_length=100)
+    emissorPf = models.ForeignKey(Emissor_Pf, on_delete=models.DO_NOTHING)
+    emissorPj = models.ForeignKey(Emissor_Pj, on_delete=models.DO_NOTHING)
+    coletorPf = models.ForeignKey(Coletor_Pf, on_delete=models.DO_NOTHING)
+    coletorPj = models.ForeignKey(Coletor_Pj, on_delete=models.DO_NOTHING)
 
 class PagamentoTaxaColeta(models.Model):
-    codPagamento = models.CharField('Código', max_length=100)
+    #codPagamento = models.CharField('Código', max_length=100)
     status = models.CharField('Status', max_length=200)
     desconto = models.FloatField('Desconto', max_length=10)
 
