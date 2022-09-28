@@ -1,10 +1,19 @@
 from django.db import models
+from stdimage.models import StdImageField
+import uuid
+
+def get_file_path(_instance, filename):
+    ext = filename.split('.')[-1]
+    filename = f'{uuid.uuid4()}.{ext}'
+    return filename
+
 
 class Emissor_Pf(models.Model):
     nome = models.CharField('Nome', max_length=100)
     telefone = models.CharField('Telefone', max_length=11)
     email = models.EmailField('E-mail')
-    #codEmissor = models.CharField('Código', max_length=100)
+    foto = StdImageField('Foto', null=True, blank=True, upload_to=get_file_path,variations={'thumb': {'width': 480, 'height': 480, 'crop': True}})
+
 
     class Meta:
         abstract = False
@@ -13,11 +22,13 @@ class Emissor_Pf(models.Model):
 
     def __str__(self):
         return self.nome
+
+
 class Emissor_Pj(models.Model):
     nome = models.CharField('Nome', max_length=100)
     telefone = models.CharField('Telefone', max_length=11)
     email = models.EmailField('E-mail')
-    #codEmissor = models.CharField('Código', max_length=100)
+    foto = StdImageField('Foto', null=True, blank=True, upload_to=get_file_path,variations={'thumb': {'width': 480, 'height': 480, 'crop': True}})
 
     class Meta:
         abstract = False
@@ -31,7 +42,7 @@ class Coletor_Pf(models.Model):
     nome = models.CharField('Nome', max_length=100)
     telefone = models.CharField('Telefone', max_length=11)
     email = models.EmailField('E-mail')
-    #codColetor = models.CharField('Código', max_length=100)
+    foto = StdImageField('Foto', null=True, blank=True, upload_to=get_file_path,variations={'thumb': {'width': 480, 'height': 480, 'crop': True}})
 
     class Meta:
         abstract = False
@@ -45,7 +56,7 @@ class Coletor_Pj(models.Model):
     nome = models.CharField('Nome', max_length=100)
     telefone = models.CharField('Telefone', max_length=11)
     email = models.EmailField('E-mail')
-    #codColetor = models.CharField('Código', max_length=100)
+    foto = StdImageField('Foto', null=True, blank=True, upload_to=get_file_path,variations={'thumb': {'width': 480, 'height': 480, 'crop': True}})
 
     class Meta:
         abstract = False
@@ -72,7 +83,6 @@ class Endereco(models.Model):
         return self.codEndereco
 
 class SolicitacaoColeta(models.Model):
-    #codSolicitacao = models.CharField('Código', max_length=100)
     valor = models.FloatField('Valor', max_length=200)
     dataSolicitacao = models.DateField('Data', max_length=10)
     qtdItens = models.IntegerField('Quantidade de Itens', max_length=100)
@@ -83,7 +93,6 @@ class SolicitacaoColeta(models.Model):
     coletorPj = models.ForeignKey(Coletor_Pj, on_delete=models.DO_NOTHING)
 
 class PagamentoTaxaColeta(models.Model):
-    #codPagamento = models.CharField('Código', max_length=100)
     status = models.CharField('Status', max_length=200)
     desconto = models.FloatField('Desconto', max_length=10)
 
