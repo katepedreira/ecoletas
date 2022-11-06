@@ -233,7 +233,7 @@
     </section>
     <!-- /End About Us Area -->
 
-    <!-- Start Courses Area -->
+    <!-- Start Coletores PF Area -->
     <section class="courses section">
         <div class="container">
             <div class="row">
@@ -242,7 +242,7 @@
                         <div class="section-icon wow zoomIn" data-wow-delay=".4s">
                             <i class="lni lni-graduation"></i>
                         </div>
-                        <h2 class="wow fadeInUp" data-wow-delay=".4s">Featured Courses</h2>
+                        <h2 class="wow fadeInUp" data-wow-delay=".4s">Principais Pessoas Coletoras</h2>
                         <p class="wow fadeInUp" data-wow-delay=".6s">There are many variations of passages of Lorem
                             Ipsum available, but the majority have suffered alteration in some form.</p>
                     </div>
@@ -251,23 +251,25 @@
             <div class="single-head">
                 <div class="row">
                     <div class="row">
-                    {% for curso in cursos %}
+                    {% for coletor in coletor_pf %}
                         <div class="col-lg-4 col-md-6 col-12">
-                            <!-- Start Single Course -->
+                            <!-- Start Single Coletor PF -->
                             <div class="single-course wow fadeInUp" data-wow-delay=".2s">
-                                <div class="course-image">
-                                    <a href="course-details.html"><img src="{{ curso.imagem.thumb.url }}" alt="{{ curso.nome }}"  alt="#"></a>
+                                <div class="coletorPf-image">
+                                     <a href="coletor_pf.html"><img src="{{ coletor.foto.thumb.url }}" alt="{{ coletor.foto }}"  alt="#"></a>
+
                                 </div>
                                 <div class="content">
-                                    <h3><a href="course-details.html">{{ curso.nome }}</a></h3>
                                     <p>
-                                        {{ curso.descricao }}
+                                        Nome: {{ coletor.nome}} <br>
+                                        Telefone: {{ coletor.telefone }}
                                     </p>
                                 </div>
                                 <div class="bottom-content">
                                     <span class="tag">
-                                        Carga Horária: {{ curso.carga_horaria }} h
+                                        Nome: {{ coletor.nome}}
                                     </span>
+
                                 </div>
                             </div>
                             <!-- End Single Course -->

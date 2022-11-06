@@ -17,6 +17,7 @@ class Emissor_Pf(models.Model):
     linkedin = models.CharField('LinkedIn', blank=True, max_length=200)
     twitter = models.CharField('Twitter', blank=True, max_length=200)
     instagram = models.CharField('Instagram', blank=True, max_length=200)
+    imagem = StdImageField('Imagem', null=True, blank=True, upload_to=get_file_path,variations={'thumb': {'width': 420, 'height': 260, 'crop': True}})
 
     class Meta:
         abstract = False
@@ -36,6 +37,7 @@ class Emissor_Pj(models.Model):
     linkedin = models.CharField('LinkedIn', blank=True, max_length=200)
     twitter = models.CharField('Twitter', blank=True, max_length=200)
     instagram = models.CharField('Instagram', blank=True, max_length=200)
+    imagem = StdImageField('Imagem', null=True, blank=True, upload_to=get_file_path,variations={'thumb': {'width': 420, 'height': 260, 'crop': True}})
 
     class Meta:
         abstract = False
@@ -72,6 +74,7 @@ class Coletor_Pj(models.Model):
     linkedin = models.CharField('LinkedIn', blank=True, max_length=200)
     twitter = models.CharField('Twitter', blank=True, max_length=200)
     instagram = models.CharField('Instagram', blank=True, max_length=200)
+    imagem = StdImageField('Imagem', null=True, blank=True, upload_to=get_file_path,variations={'thumb': {'width': 420, 'height': 260, 'crop': True}})
 
     class Meta:
         abstract = False
