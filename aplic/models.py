@@ -98,7 +98,7 @@ class Endereco(models.Model):
         verbose_name_plural = 'Endereços'
 
     def __str__(self):
-        return self.codEndereco
+        return self.logradouro
 
 class SolicitacaoColeta(models.Model):
     valor = models.FloatField('Valor', max_length=200)
