@@ -74,7 +74,6 @@ class Coletor_Pj(models.Model):
     linkedin = models.CharField('LinkedIn', blank=True, max_length=200)
     twitter = models.CharField('Twitter', blank=True, max_length=200)
     instagram = models.CharField('Instagram', blank=True, max_length=200)
-    imagem = StdImageField('Imagem', null=True, blank=True, upload_to=get_file_path,variations={'thumb': {'width': 420, 'height': 260, 'crop': True}})
 
     class Meta:
         abstract = False
@@ -85,7 +84,6 @@ class Coletor_Pj(models.Model):
         return self.nome
 
 class Endereco(models.Model):
-    #codEndereco = models.CharField('Código', max_length=100)
     logradouro = models.CharField('Logradouro', max_length=200)
     numero = models.CharField('Número', max_length=10)
     cidade = models.CharField('Cidade', max_length=50)
