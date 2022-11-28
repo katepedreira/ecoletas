@@ -35,6 +35,7 @@ class EmissorPjView(TemplateView):
 
 class ColetorPfView(TemplateView):
     template_name = 'coletor_pf.html'
+    paginate_by = 5
 
     def get_context_data(self, **kwargs):
         context = super(ColetorPfView, self).get_context_data(**kwargs)
@@ -45,6 +46,7 @@ class ColetorPfView(TemplateView):
 
 class ColetorPjView(TemplateView):
     template_name = 'coletor_pj.html'
+    paginate_by = 5
 
     def get_context_data(self, **kwargs):
         context = super(ColetorPjView, self).get_context_data(**kwargs)
@@ -53,9 +55,19 @@ class ColetorPjView(TemplateView):
 
 class PaginaColetoresPF(TemplateView):
     template_name = 'pagina-coletores-pf.html'
+    paginate_by = 15
 
     def get_context_data(self, **kwargs):
         context = super(PaginaColetoresPF, self).get_context_data(**kwargs)
         context['pagina-coletores-pf'] = Coletor_Pf.objects.order_by('nome').all()
+        return context
+
+class PaginaColetoresPJ(TemplateView):
+    template_name = 'pagina-coletores-pj.html'
+    paginate_by = 15
+
+    def get_context_data(self, **kwargs):
+        context = super(PaginaColetoresPJ, self).get_context_data(**kwargs)
+        context['pagina-coletores-pj'] = Coletor_Pj.objects.order_by('nome').all()
         return context
 
