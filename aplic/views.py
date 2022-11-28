@@ -33,7 +33,7 @@ class EmissorPjView(TemplateView):
         context['emissor_pj'] = Emissor_Pj.objects.order_by('nome').all()
         return context
 
-class ColetorPfView(ListView):
+class ColetorPfView(TemplateView):
     template_name = 'coletor_pf.html'
 
     def get_context_data(self, **kwargs):

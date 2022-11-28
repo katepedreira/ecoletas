@@ -8,13 +8,11 @@
             <div class="row align-items-center">
                 <div class="col-lg-8 offset-lg-2 col-md-12 col-12">
                     <div class="breadcrumbs-content">
-                        <h1 class="page-title">Coletor_Pj</h1>
-                        <p>Lorem Ipsum is simply dummy text of the printing and typesetting industry. Lorem Ipsum has
-                            been the industry's standard dummy text</p>
+                        <h1 class="page-title">{{ coletor.nome }}</h1>
+                        <p>{{ coletor.telefone }}</p>
                     </div>
                     <ul class="breadcrumb-nav">
                         <li><a href="{% url 'index' %}">Home</a></li>
-                        <li><a href="{% url 'coletor_pj' %}">Coletor_Pj</a></li>
                     </ul>
                 </div>
             </div>
@@ -36,37 +34,27 @@
                  </div>
               </div>
            </div>
-           {% for coletor in coletor_pj %}
-                  <div class="col-lg-6 col-md-6 col-12">
-                     <div class="single-team wow fadeInUp" data-wow-delay=".2s" style="visibility: visible; animation-delay: 0.2s; animation-name: fadeInUp;">
-                        <div class="row">
-                           <div class="col-lg-5 col-12">
-                              <div class="image">
-                                 <img src="{{ coletor.foto.thumb.url }}" alt="{{ coletor.nome }}" alt="#">
-                              </div>
-                           </div>
-                           <div class="col-lg-7 col-12">
-                              <div class="info-head">
-                                 <div class="info-box">
-                                    <h4 class="name"><a href="#">{{ coletor.nome }}</a></h4>
-                                    <p>
-                                        {{ coletor.telefone }}
-                                    </p>
-                                 </div>
-                                 <ul class="social">
-                                    <li><a href="{{ coletor.facebook }}"><i class="lni lni-facebook-filled"></i></a></li>
-                                    <li><a href="{{ coletor.twitter }}"><i class="lni lni-twitter-original"></i></a></li>
-                                    <li><a href="{{ coletor.linkedin }}"><i class="lni lni-linkedin-original"></i></a></li>
-                                    <li><a href="{{ coletor.instagram }}"><i class="lni lni-instagram-original"></i></a></li>
-                                 </ul>
-                              </div>
-                           </div>
-                        </div>
-                     </div>
-                  </div>
-               {% endfor %}
-           </div>
-     </section>
-    <!-- SECTION COLETOR PJ  -->
+           <table class="table">
+
+                <thead>
+                    <tr>
+                        <th scope="col">Nome do coletor</th>
+                        <th scope="col">Telefone</th>
+                    </tr>
+                </thead>
+
+                <tbody>
+                    {% for coletor in coletor_pj %}
+                        <tr>
+                            <th scope="row">{{ coletor.nome }}</th>
+                            <th scope="row">{{ coletor.telefone }}</th>
+                        </tr>
+                    {% endfor %}
+                </tbody>
+            </table>
+        </div>
+    </section>
+
+    <!-- SECTION COLETOR PF  -->
 
 {% endblock %}

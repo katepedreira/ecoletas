@@ -35,20 +35,28 @@
               </div>
            </div>
            <table class="table">
-
-                <thead>
-                    <tr>
-                        <th scope="col">Nome da Disciplina</th>
-                        <th scope="col">Carga Horária</th>
-                    </tr>
-                </thead>
-
                 <tbody>
                     {% for coletor in coletor_pf %}
-                        <tr>
-                            <th scope="row">{{ coletor.nome }}</th>
-                            <th scope="row">{{ coletor.telefone }}</th>
-                        </tr>
+                        <div class="col-lg-4 col-md-6 col-12">
+                            <!-- Start Single Coletor PF -->
+                            <div class="single-course wow fadeInUp" data-wow-delay=".2s">
+                                <div class="coletorPf-image">
+                                     <a><img src="{{ coletor.foto.thumb.url }}" alt="{{ coletor.foto }}"  alt="#"></a>
+
+                                </div>
+                                <div class="content">
+                                    <p>
+                                        Nome: {{ coletor.nome}} <br>
+                                        Telefone: {{ coletor.telefone }}
+                                    </p>
+                                    <div class="button wow fadeInUp" data-wow-delay=".9s">
+                                        <a href="{% url 'coletor_pf' %}" class="btn">Ver Perfil</a>
+                                    </div>
+                                </div>
+
+                            </div>
+                            <!-- End Single Coletor PF-->
+                        </div>
                     {% endfor %}
                 </tbody>
             </table>
