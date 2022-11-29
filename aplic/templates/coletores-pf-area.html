@@ -7,11 +7,9 @@
                 <div class="col-12">
                     <div class="section-title">
                         <div class="section-icon wow zoomIn" data-wow-delay=".4s">
-                            <i class="lni lni-graduation"></i>
+                            <i class="lni lni-grow"></i>
                         </div>
-                        <h2 class="wow fadeInUp" data-wow-delay=".4s">Principais Coletores</h2>
-                        <p class="wow fadeInUp" data-wow-delay=".6s">There are many variations of passages of Lorem
-                            Ipsum available, but the majority have suffered alteration in some form.</p>
+                        <h2 class="wow fadeInUp" data-wow-delay=".4s">Coletores Parceiros</h2>
                     </div>
                 </div>
             </div>
@@ -22,22 +20,20 @@
                         <div class="col-lg-4 col-md-6 col-12">
                             <!-- Start Single Coletor PF -->
                             <div class="single-course wow fadeInUp" data-wow-delay=".2s">
-                                <div class="coletorPf-image">
-                                     <a href="{% url 'coletor_pf' %}"><img src="{{ coletor.foto.thumb.url }}" alt="{{ coletor.foto }}"  alt="#"></a>
+                                <div class="course-image">
+                                     <a><img src="{{ coletor.foto.thumb.url }}" alt="{{ coletor.foto }}"  alt="#"></a>
 
                                 </div>
                                 <div class="content">
                                     <p>
-                                        Nome: {{ coletor.nome}} <br>
+                                        {{ coletor.nome}} <br>
                                         Telefone: {{ coletor.telefone }}
                                     </p>
+                                    <div class="button wow fadeInUp" data-wow-delay=".9s">
+                                        <a href="{% url 'coletor_pf' %}" class="btn">Ver Perfil</a>
+                                    </div>
                                 </div>
-                                <div class="bottom-content">
-                                    <span class="tag">
-                                        Nome: {{ coletor.nome}}
-                                    </span>
 
-                                </div>
                             </div>
                             <!-- End Single Coletor PF-->
                         </div>

@@ -73,9 +73,8 @@
                                     <h1 class="wow fadeInUp" data-wow-delay=".5s">E-Coletas</h1>
                                     <p class="wow fadeInUp" data-wow-delay=".7s">Uma nova forma de lidar com o lixo eletrônico</p>
                                     <div class="button wow fadeInUp" data-wow-delay=".9s">
-                                        <a href="{% url 'pagina-coletores-pf' %}" class="btn alt-btn">Pessoas Coletoras</a>
-                                        <a href="{% url 'coletor_pj' %}" class="btn alt-btn">Empresas Coletoras</a>
-                                        <a href="https://www.google.com/maps/d/u/0/embed?mid=15BRzaO5tjK9_-xEnUVvac0vEHNO8nVY&ehbc=2E312F" class="btn alt-btn">Pontos de Coleta</a>
+                                        <a href="{% url 'pagina-coletores-pf' %}" class="btn alt-btn">Coletores Parceiros</a>
+                                        <a href="https://www.google.com/maps/d/u/0/embed?mid=15BRzaO5tjK9_-xEnUVvac0vEHNO8nVY&ehbc=2E312F" class="btn">Pontos de Coleta</a>
                                     </div>
                                 </div>
                             </div>
@@ -169,100 +168,9 @@
     <!-- /End About Us Area -->
 
     <!-- Start Coletores PF Area -->
-    <section class="courses section">
-        <div class="container">
-            <div class="row">
-                <div class="col-12">
-                    <div class="section-title">
-                        <div class="section-icon wow zoomIn" data-wow-delay=".4s">
-                            <i class="lni lni-grow"></i>
-                        </div>
-                        <h2 class="wow fadeInUp" data-wow-delay=".4s">Principais Pessoas Coletoras</h2>
-                    </div>
-                </div>
-            </div>
-            <div class="single-head">
-                <div class="row">
-                    <div class="row">
-                    {% for coletor in coletor_pf %}
-                        <div class="col-lg-4 col-md-6 col-12">
-                            <!-- Start Single Coletor PF -->
-                            <div class="single-course wow fadeInUp" data-wow-delay=".2s">
-                                <div class="course-image">
-                                     <a><img src="{{ coletor.foto.thumb.url }}" alt="{{ coletor.foto }}"  alt="#"></a>
+    {% include 'coletores-pf-area.html' %}
+    <!-- End Coletores PF Area -->
 
-                                </div>
-                                <div class="content">
-                                    <p>
-                                        Nome: {{ coletor.nome}} <br>
-                                        Telefone: {{ coletor.telefone }}
-                                    </p>
-                                    <div class="button wow fadeInUp" data-wow-delay=".9s">
-                                        <a href="{% url 'coletor_pf' %}" class="btn">Ver Perfil</a>
-                                    </div>
-                                </div>
-
-                            </div>
-                            <!-- End Single Coletor PF-->
-                        </div>
-                    {% endfor %}
-                </div>
-
-                        <!-- End Single Coletor -->
-                    </div>
-                </div>
-            </div>
-        </div>
-    </section>
-<!-- End Coletores PF Area -->
-
-     <!-- Start Coletores PJ Area -->
-    <section class="courses section">
-        <div class="container">
-            <div class="row">
-                <div class="col-12">
-                    <div class="section-title">
-                        <div class="section-icon wow zoomIn" data-wow-delay=".4s">
-                            <i class="lni lni-grow"></i>
-                        </div>
-                        <h2 class="wow fadeInUp" data-wow-delay=".4s">Principais Empresas Coletoras</h2>
-                    </div>
-                </div>
-            </div>
-            <div class="single-head">
-                <div class="row">
-                    <div class="row">
-                    {% for coletor in coletor_pj %}
-                        <div class="col-lg-4 col-md-6 col-12">
-                            <!-- Start Single Coletor PJ -->
-                            <div class="single-course wow fadeInUp" data-wow-delay=".2s">
-                                <div class="course-image">
-                                     <a href="{% url 'coletor_pj' %}"><img src="{{ coletor.foto.thumb.url }}" alt="{{ coletor.foto }}"  alt="#"></a>
-
-                                </div>
-                                <div class="content">
-                                    <p>
-                                        Nome: {{ coletor.nome}} <br>
-                                        Telefone: {{ coletor.telefone }}
-                                    </p>
-                                    <div class="button wow fadeInUp" data-wow-delay=".9s">
-                                        <a href="{% url 'coletor_pj' %}" class="btn">Ver Perfil</a>
-                                    </div>
-                                </div>
-
-                            </div>
-                            <!-- End Single Coletor PJ-->
-                        </div>
-                    {% endfor %}
-                </div>
-
-                        <!-- End Single Coletor -->
-                    </div>
-                </div>
-            </div>
-        </div>
-    </section>
-<!-- End Coletores PJ Area -->
 
     <!-- Start Maps Area -->
      <section class="courses section">
