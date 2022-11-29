@@ -104,6 +104,8 @@ class SolicitacaoColeta(models.Model):
         ('Computador', 'Computador'),
         ('Televisao', 'Televisao'),
         ('Carregador', 'Carregador'),
+        ('Pilha', 'Pilha'),
+        ('Outros', 'Outros')
     )
 
     valor = models.FloatField('Valor', max_length=200)

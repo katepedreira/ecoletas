@@ -78,7 +78,9 @@ class DadosTipoProdutoView(BaseLineChartView):
         labels = ['Celular',
         'Computador',
         'Televisao',
-        'Carregador']
+        'Carregador',
+        'Pilha',
+        'Outros']
         return labels
 
     def get_data(self):
@@ -104,6 +106,18 @@ class DadosTipoProdutoView(BaseLineChartView):
         dados.append(total)
         queryset = SolicitacaoColeta.objects.filter(tipoProduto='Carregador')
         #queryset = SolicitacaoColeta.objects.order_by('tipoProduto').annotate(total=Count('tipoProduto'))
+        total = 0
+        for linha in queryset:
+            total = total + linha.qtdItens
+        dados.append(total)
+        queryset = SolicitacaoColeta.objects.filter(tipoProduto='Pilha')
+        # queryset = SolicitacaoColeta.objects.order_by('tipoProduto').annotate(total=Count('tipoProduto'))
+        total = 0
+        for linha in queryset:
+            total = total + linha.qtdItens
+        dados.append(total)
+        queryset = SolicitacaoColeta.objects.filter(tipoProduto='Outros')
+        # queryset = SolicitacaoColeta.objects.order_by('tipoProduto').annotate(total=Count('tipoProduto'))
         total = 0
         for linha in queryset:
             total = total + linha.qtdItens
