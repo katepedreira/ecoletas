@@ -99,18 +99,22 @@ class Endereco(models.Model):
         return self.logradouro
 
 class SolicitacaoColeta(models.Model):
+    OPCOES = (
+        ('Celular', 'Celular'),
+        ('Computador', 'Computador'),
+        ('Televisao', 'Televisao'),
+        ('Carregador', 'Carregador'),
+    )
+
     valor = models.FloatField('Valor', max_length=200)
     dataSolicitacao = models.DateField('Data', max_length=10)
-    qtdItens = models.IntegerField('Quantidade de Itens', max_length=100)
-    tipoProduto = models.CharField('Tipo de Produto', max_length=100)
-    emissorPf = models.ForeignKey(Emissor_Pf, on_delete=models.DO_NOTHING)
-    emissorPj = models.ForeignKey(Emissor_Pj, on_delete=models.DO_NOTHING)
+    qtdItens = models.IntegerField('Quantidade de Itens')
+    tipoProduto = models.CharField('Tipo de Produto', blank=True, max_length=100, choices=OPCOES)
     coletorPf = models.ForeignKey(Coletor_Pf, on_delete=models.DO_NOTHING)
-    coletorPj = models.ForeignKey(Coletor_Pj, on_delete=models.DO_NOTHING)
 
 class PagamentoTaxaColeta(models.Model):
     status = models.CharField('Status', max_length=200)
-    desconto = models.FloatField('Desconto', max_length=10)
+    desconto = models.FloatField('Desconto')
 
 
 
