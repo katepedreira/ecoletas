@@ -13,4 +13,5 @@ urlpatterns = [
     path('dados-grafico-coletas/', DadosTipoProdutoView.as_view(), name='dados-grafico-tipo-produto'),
 
 
+
 ]

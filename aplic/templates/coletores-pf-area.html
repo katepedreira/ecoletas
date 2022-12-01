@@ -1,4 +1,5 @@
 {% load static %}
+{% block content %}
 
 <!-- Start Coletores PF Area -->
     <section class="courses section">
@@ -33,17 +34,17 @@
                                         <a href="{% url 'coletor_pf' %}" class="btn">Ver Perfil</a>
                                     </div>
                                 </div>
-
                             </div>
                             <!-- End Single Coletor PF-->
                         </div>
                     {% endfor %}
                 </div>
+                    {% include 'paginacao.html' %}
 
                         <!-- End Single Coletor -->
-                    </div>
-                </div>
             </div>
         </div>
     </section>
+{% endblock %}
 <!-- End Coletores PF Area -->
+

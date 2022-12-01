@@ -1,24 +1,29 @@
-
+{% load bootstrap4 %}
+{% bootstrap_css %}
 {% load static %}
+{% block content %}
 
+<!-- Start Coletores PF Area -->
 
- <!-- Start Coletores PF Area -->
-    <section class="courses section">
-        <div class="container">
-            <div class="row">
-                <div class="col-12">
-                    <div class="section-title">
-                        <div class="section-icon wow zoomIn" data-wow-delay=".4s">
-                            <i class="lni lni-grow"></i>
+    <div>
+        <section class="courses section">
+            <sec class="container">
+                <div class="row">
+                    <div class="col-12">
+                        <div class="section-title">
+                            <div class="section-icon wow zoomIn" data-wow-delay=".4s">
+                                <i class="lni lni-grow"></i>
+                            </div>
+                            <h2 class="wow fadeInUp" data-wow-delay=".4s">Coletores Parceiros</h2>
                         </div>
-                        <h2 class="wow fadeInUp" data-wow-delay=".4s">Coletores Parceiros</h2>
                     </div>
                 </div>
-            </div>
-            <div class="single-head">
+
+
+                <div class="single-head">
                 <div class="row">
                     <div class="row">
-                    {% for coletor in coletor_pf %}
+                    {% for coletor in page_obj %}
                         <div class="col-lg-4 col-md-6 col-12">
                             <!-- Start Single Coletor PF -->
                             <div class="single-course wow fadeInUp" data-wow-delay=".2s">
@@ -37,17 +42,23 @@
                                 </div>
 
                             </div>
+
                             <!-- End Single Coletor PF-->
                         </div>
                     {% endfor %}
                 </div>
+                    {% include 'paginacao.html' %}
 
                         <!-- End Single Coletor -->
-                    </div>
-                </div>
             </div>
         </div>
-    </section>
-<!-- End Coletores PF Area -->
+
+        </section>
+    </div>
+
+<!-- SECTION CURSO  -->
+
+{% endblock %}
+
 
 

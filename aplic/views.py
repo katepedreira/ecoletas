@@ -4,6 +4,14 @@ from django.views.generic import TemplateView, ListView
 from .models import Emissor_Pf, Emissor_Pj, Coletor_Pf, Coletor_Pj, SolicitacaoColeta
 from django.db.models import Count
 from chartjs.views.lines import BaseLineChartView
+from django.core.paginator import Paginator
+from django.core.files.storage import FileSystemStorage
+from django.template.loader import render_to_string
+from django.http import HttpResponse
+
+
+
+
 
 class IndexView(TemplateView):
     template_name = 'base.html'
@@ -34,13 +42,25 @@ class EmissorPjView(TemplateView):
         context['emissor_pj'] = Emissor_Pj.objects.order_by('nome').all()
         return context
 
+# class ColetorPfView(TemplateView):
+#     template_name = 'coletor_pf.html'
+#     paginate_by = 3
+#
+#     def get_context_data(self, **kwargs):
+#         context = super(ColetorPfView, self).get_context_data(**kwargs)
+#         #id = self.kwargs['id']
+#         context['coletor_pf'] = Coletor_Pf.objects.order_by('nome').all()
+#         return context
+
 class ColetorPfView(TemplateView):
+    queryset = Coletor_Pf.objects.all()
     template_name = 'coletor_pf.html'
-    paginate_by = 5
+    paginate_by = 3
+    ordering = 'nome'
+
 
     def get_context_data(self, **kwargs):
         context = super(ColetorPfView, self).get_context_data(**kwargs)
-        #id = self.kwargs['id']
         context['coletor_pf'] = Coletor_Pf.objects.order_by('nome').all()
         return context
 
@@ -54,9 +74,10 @@ class ColetorPjView(TemplateView):
         context['coletor_pj'] = Coletor_Pj.objects.order_by('nome').all()
         return context
 
-class PaginaColetoresPF(TemplateView):
+class PaginaColetoresPF(ListView):
+    queryset = Coletor_Pf.objects.all()
     template_name = 'pagina-coletores-pf.html'
-    paginate_by = 15
+    paginate_by = 9
 
     def get_context_data(self, **kwargs):
         context = super(PaginaColetoresPF, self).get_context_data(**kwargs)
@@ -124,5 +145,9 @@ class DadosTipoProdutoView(BaseLineChartView):
         dados.append(total)
         resultado.append(dados)
         return resultado
+
+
+
+
 
 

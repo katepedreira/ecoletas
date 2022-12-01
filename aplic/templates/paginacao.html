@@ -1,6 +1,7 @@
 {% load bootstrap4 %}
 {% bootstrap_css %}
 
+
  {% if is_paginated %}
 
                 <nav aria-label="navegacao-paginacao">
@@ -20,13 +21,18 @@
                             {% else %}
                                 <li class="page-item"><a class="page-link" href="?page={{ num }}">{{ num }}</a></li>
                             {% endif %}
+
                         {% endfor %}
 
                         {% if page_obj.has_next %}
-                           <li class="page-item"><a class="page-link" href="?page={{ page_obj.next_page_number }}">&raquo;</a></li>
+
+                            <li class="page-item"><a class="page-link" href="?page={{ page_obj.next_page_number }}">&raquo;</a></li>
                         {% else %}
                             <li class="page-item disabled"><a class="page-link" href="#">&raquo;</a></li>
                         {% endif %}
+
                     </ul>
+
                 </nav>
-            {% endif %}
+
+{% endif %}

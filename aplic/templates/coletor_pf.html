@@ -1,4 +1,4 @@
-{% extends 'index.html'  %}
+{% extends 'base.html'  %}
 {% load static %}
 {% block content %}
 
@@ -21,52 +21,43 @@
     <!-- End Breadcrumbs -->
 
     <!-- SECTION COLETOR PF  -->
-    <section id="coletor_pf" class="coletor_pf section">
+    <section id="curso">
         <div class="container">
            <div class="row">
               <div class="col-12">
                  <div class="section-title align-center gray-bg">
-                    <span>Coletor PF</span>
-                    <h2 class="wow fadeInUp" data-wow-delay=".4s" style="visibility: visible; animation-delay: 0.4s; animation-name: fadeInUp;">Our Experienced Advisors</h2>
-                    <p class="wow fadeInUp" data-wow-delay=".6s" style="visibility: visible; animation-delay: 0.6s; animation-name: fadeInUp;">There are many variations of passages of Lorem
-                       Ipsum available, but the majority have suffered alteration in some form.
-                    </p>
+                    <br/>
+                    <h2 class="wow fadeInUp" data-wow-delay=".4s" style="visibility: visible; animation-delay: 0.4s; animation-name: fadeInUp;">Informações</h2>
                  </div>
               </div>
            </div>
+
+
            <table class="table">
+
+                <thead>
+                    <tr>
+                        <th scope="col">Nome do Coletor</th>
+                        <th scope="col">Telefone</th>
+                    </tr>
+                </thead>
+
                 <tbody>
-                    {% for coletor in coletor_pf %}
-                        <div class="col-lg-4 col-md-6 col-12">
-                            <!-- Start Single Coletor PF -->
-                            <div class="single-course wow fadeInUp" data-wow-delay=".2s">
-                                <div class="coletorPf-image">
-                                     <a><img src="{{ coletor.foto.thumb.url }}" alt="{{ coletor.foto }}"  alt="#"></a>
-
-                                </div>
-                                <div class="content">
-                                    <p>
-                                        Nome: {{ coletor.nome}} <br>
-                                        Telefone: {{ coletor.telefone }}
-                                    </p>
-                                    <div class="button wow fadeInUp" data-wow-delay=".9s">
-                                        <a href="{% url 'coletor_pf' %}" class="btn">Ver Perfil</a>
-                                    </div>
-                                </div>
-
-                            </div>
-                            <!-- End Single Coletor PF-->
-                        </div>
+                    {% for coletor in page_obj %}
+                        <tr>
+                            <th scope="row">{{ coletor.nome }}</th>
+                            <th scope="row">{{ coletor.telefone }}</th>
+                        </tr>
                     {% endfor %}
                 </tbody>
-            </table>
+           </table>
 
-            {% include 'paginacao.html' %}
+           {% include 'paginacao.html' %}
 
         </div>
-    </section>
-
-    <!-- SECTION COLETOR PF  -->
+     </section>
+    <!-- SECTION CURSO  -->
 
 {% endblock %}
+
 
