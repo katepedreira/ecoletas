@@ -1,3 +1,4 @@
+
 from django.urls import path
 
 from .views import IndexView, SobreView, EmissorPfView, EmissorPjView, ColetorPfView, ColetorPjView, PaginaColetoresPF, DadosTipoProdutoView

@@ -145,9 +145,3 @@ class DadosTipoProdutoView(BaseLineChartView):
         dados.append(total)
         resultado.append(dados)
         return resultado
-
-
-
-
-
-
